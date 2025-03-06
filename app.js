@@ -9,6 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use(require('./routes/product.route'))
+app.use(require('./routes/purchase.route'))
 
 mongoose.connect('mongodb+srv://algo-crm:AlgoSalSabil2024@algo-crm.m4ao4.mongodb.net/',{}).then(()=>
 console.log("Connected to the database!"))
