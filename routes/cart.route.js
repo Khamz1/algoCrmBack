@@ -3,8 +3,9 @@ const { cartController } = require("../controllers/cart.controller")
 
 const router = Router()
 
-router.get("/cart/:studentId", cartController.get)
-router.patch("/cart/:studentId/add/:productId", cartController.addToCart)
-router.patch("/cart/:studentId/remove/:productId", cartController.addToCart)
+router.get("/cart/:userId", cartController.get)
+router.patch("/cart/:userId/add/:productId", cartController.addToCart)
+router.patch("/cart/:userId/remove/:productId", cartController.removeFromCart)
+router.post("/cart/makePurchase/:userId/", cartController.makePurchase)
 
 module.exports = router

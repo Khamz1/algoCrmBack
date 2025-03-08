@@ -39,8 +39,10 @@ module.exports.userController = {
 
     delete: async (req, res) => {
         try {
-            const data = await User.findByIdAndDelete(req.params.id)
-            res.json(data)
+            const userData = await User.findByIdAndDelete(req.params.id)
+            await Cart.findByIdAndDelete(req.params.id)
+
+            res.json(userData)
         } catch (error) {
             res.json(error)
         }
