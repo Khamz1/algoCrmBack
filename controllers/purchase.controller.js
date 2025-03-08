@@ -1,5 +1,6 @@
 const Purchase = require("../Models/Purchase.model")
 const Product = require("../Models/Product.model")
+
 module.exports.purchaseController = {
     getPurchase: async (req, res) => {
         try {
@@ -24,13 +25,12 @@ module.exports.purchaseController = {
         try {
             const { total, productList, userId } = req.body;
 
-            // Проверка наличия продуктов
-            // for (const item of productList) {
-            //     const product = await Product.findById(item.product);
-            //     if (!product) {
-            //         return res.status(404).send({ error: `Продукт с ID ${item.product} не найден` });
-            //     }
-            // }
+            for (const item of productList) {
+                const product = await Product.findById(item.product);
+                if (!product) {
+                    return res.status(404).send({ error: `Продукт с ID ${item.product} не найден` });
+                }
+            }
 
             const purchase = new Purchase({ total, productList, userId });
             await purchase.save();

@@ -5,12 +5,14 @@ const Product = require('./Product.model'); // Импортируем модел
 const purchaseSchema = new mongoose.Schema({
     date: { type: Date, default: Date.now }, // Дата покупки (по умолчанию текущая дата)
     total: { type: Number, required: true }, // Общая сумма покупки
-    productList: [
-        {
-            product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true }, // Ссылка на продукт
-            left: { type: Number, required: true }, // Количество продукта
-        },
-    ],
+    // productList: [
+    //     {
+    //         product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true }, // Ссылка на продукт
+    //         left: { type: Number, required: true }, // Количество продукта
+    //     },
+    // ],
+
+    productList: Array,
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }, // Ссылка на студента
 });
 
